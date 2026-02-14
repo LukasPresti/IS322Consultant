@@ -45,7 +45,12 @@ def update_config(user_prompt):
     2. Modify the YAML content to reflect the user's request.
     3. Return ONLY the valid YAML code. Do not include markdown code blocks (```yaml ... ```) or any other text.
     4. Ensure the structure (keys) remains consistent unless explicitly asked to change.
-    5. IMPORTANT: When updating theme colors, ALWAYS use valid CSS hex codes (e.g., '#00ff00' instead of 'neon green') or standard CSS color names. 
+    5. IMPORTANT: When updating theme colors, ALWAYS use valid CSS hex codes (e.g., '#00ff00' instead of 'neon green') or standard CSS color names.
+    6. DESIGN CONTROL: You can now control the design via these keys in 'theme':
+       - `primary_color`: Hex code.
+       - `background`: Hex code.
+       - `font`: 'sans' (default), 'serif', or 'mono'.
+       - `alignment`: 'center' (default), 'left', or 'right'.
     """
 
     # Prepare Request

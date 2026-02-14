@@ -22,5 +22,7 @@ services:
     description: "Develop a robust incident response plan to minimize the impact of security breaches."
     icon: "robot"
 theme:
-  primary_color: "#ff0000"
+  primary_color: "#00ff00"
   background: "#000000"
+  font: "mono"
+  alignment: "left"
