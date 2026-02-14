@@ -49,6 +49,7 @@ def update_config(user_prompt):
     6. DESIGN CONTROL: You can now control the design via these keys in 'theme':
        - `primary_color`: Hex code.
        - `background`: Hex code.
+       - `text_color`: Hex code (for main body text).
        - `font`: 'sans' (default), 'serif', or 'mono'.
        - `alignment`: 'center' (default), 'left', or 'right'.
     """

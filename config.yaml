@@ -24,5 +24,6 @@ services:
 theme:
   primary_color: "#00ff00"
   background: "#000000"
+  text_color: "#00ff00"
   font: "mono"
   alignment: "left"
