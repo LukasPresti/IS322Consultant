@@ -46,12 +46,11 @@ def update_config(user_prompt):
     3. Return ONLY the valid YAML code. Do not include markdown code blocks (```yaml ... ```) or any other text.
     4. Ensure the structure (keys) remains consistent unless explicitly asked to change.
     5. IMPORTANT: When updating theme colors, ALWAYS use valid CSS hex codes (e.g., '#00ff00' instead of 'neon green') or standard CSS color names.
-    6. DESIGN CONTROL: You can now control the design via these keys in 'theme':
-       - `primary_color`: Hex code.
-       - `background`: Hex code.
-       - `text_color`: Hex code (for main body text).
-       - `font`: 'sans' (default), 'serif', or 'mono'.
-       - `alignment`: 'center' (default), 'left', or 'right'.
+    6. DESIGN & LAYOUT CONTROL: The 'style' key contains Tailwind CSS classes for every section.
+       - To change the LAYOUT (e.g., from 'grid' to 'list' or 'centered' to 'left-aligned'), ANY of these classes can be modified.
+       - Example: Change 'services_grid' from "grid grid-cols-3" to "flex flex-col space-y-4" for a vertical list layout.
+       - Example: Change 'hero_section' to "flex flex-row-reverse" to flip the layout.
+       - YOU HAVE FULL CONTROL over the Tailwind classes in the 'style' block.
     """
 
     # Prepare Request
