@@ -108,7 +108,18 @@ def update_config(user_prompt):
             f.write(new_yaml_content)
         
         print("Successfully updated config.yaml based on your request.")
-        
+
+        # Automate Git operations
+        import subprocess
+        try:
+            print("Pushing changes to GitHub...")
+            subprocess.run(["git", "add", "."], check=True)
+            subprocess.run(["git", "commit", "-m", f"AI Update: {user_prompt[:50]}..."], check=True)
+            subprocess.run(["git", "push"], check=True)
+            print("Successfully pushed changes to GitHub! The site is rebuilding.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error pushing to GitHub: {e}")
+
     except requests.exceptions.RequestException as e:
         print(f"API Error: {e}")
         if 'response' in locals() and response:

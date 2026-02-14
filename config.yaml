@@ -1,6 +1,6 @@
 site_title: "ENTER THE MATRIX"
 name: "Cipher"
-role: "Cybersecurity Specialist"
+role: "AI Automation Architect"
 bio: "Protecting businesses from cyber threats. I specialize in Penetration Testing, Network Defense, and Security Audits."
 email: "alex@neuralconsulting.ai"
 linkedin: "https://linkedin.com/in/alexneural"
@@ -22,7 +22,7 @@ services:
     description: "Develop a robust incident response plan to minimize the impact of security breaches."
     icon: "robot"
 theme:
-  primary_color: "#DFFF00"
+  primary_color: "#00FFFF"
   background: "#000000"
   text_color: "#DFFF00"
 style: 
