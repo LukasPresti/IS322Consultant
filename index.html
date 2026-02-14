@@ -13,9 +13,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#00ff00',
+                        primary: '#FFDA00',
                         dark: '#000000',
-                        text: '#00ff00',
+                        text: '#FFDA00',
                     }
                 }
             }
@@ -29,11 +29,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body
-    class="bg-dark text-text antialiased selection:bg-primary selection:text-dark font-mono">
+<body class="bg-dark text-text antialiased selection:bg-primary selection:text-dark font-mono">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-white/10">
+    <nav class="fixed w-full bottom-0 z-50 bg-dark/90 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -57,24 +56,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home"
-        class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-start text-left">
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
             <span class="block">Unlock the Power of</span>
             <span class="block text-primary">
-                Artificial Intelligence
+                Cybersecurity Specialist
             </span>
         </h1>
         <p class="mt-4 max-w-2xl text-xl opacity-80 leading-relaxed">
             Protecting businesses from cyber threats. I specialize in Penetration Testing, Network Defense, and Security Audits.
         </p>
-        <div class="mt-10 flex gap-4 justify-center">
-            <a href="#contact"
-                class="px-8 py-3 rounded-full bg-primary text-dark font-semibold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
+        <div class="mt-10 flex gap-4">
+            <a href="#contact" class="px-8 py-3 rounded-sm bg-primary text-dark font-bold hover:bg-opacity-80 transition-all uppercase tracking-widest">
                 Get Started
             </a>
-            <a href="#services"
-                class="px-8 py-3 rounded-full border border-current hover:text-primary hover:border-primary font-semibold transition-all">
+            <a href="#services" class="px-8 py-3 rounded-sm border border-primary text-primary hover:bg-primary hover:text-dark font-bold transition-all uppercase tracking-widest">
                 View Services
             </a>
         </div>
@@ -116,15 +112,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Core Services</h2>
-                <p class="opacity-70 max-w-2xl mx-auto">Tailored AI solutions to drive your business forward.</p>
+                <p class="opacity-70 max-w-2xl mx-auto">Tailored solutions to secure your business.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex flex-col space-y-8">
                 
-                <div
-                    class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/10 group">
+                <div class="p-8 rounded-sm border border-primary/30 hover:border-primary bg-black transition-all hover:shadow-[0_0_20px_rgba(255,218,0,0.3)] group">
                     <div
-                        class="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-primary border border-white/10">
+                        class="w-12 h-12 rounded-lg flex items-center justify-center mb-6 text-primary border border-white/10 group-hover:border-primary group-hover:scale-110 transition-transform">
                         <!-- Simple Icon placeholder based on service icon name -->
                         <span class="text-2xl">
                             ♟️
@@ -138,10 +133,9 @@
                     </p>
                 </div>
                 
-                <div
-                    class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/10 group">
+                <div class="p-8 rounded-sm border border-primary/30 hover:border-primary bg-black transition-all hover:shadow-[0_0_20px_rgba(255,218,0,0.3)] group">
                     <div
-                        class="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-primary border border-white/10">
+                        class="w-12 h-12 rounded-lg flex items-center justify-center mb-6 text-primary border border-white/10 group-hover:border-primary group-hover:scale-110 transition-transform">
                         <!-- Simple Icon placeholder based on service icon name -->
                         <span class="text-2xl">
                             
@@ -155,10 +149,9 @@
                     </p>
                 </div>
                 
-                <div
-                    class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/10 group">
+                <div class="p-8 rounded-sm border border-primary/30 hover:border-primary bg-black transition-all hover:shadow-[0_0_20px_rgba(255,218,0,0.3)] group">
                     <div
-                        class="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-primary border border-white/10">
+                        class="w-12 h-12 rounded-lg flex items-center justify-center mb-6 text-primary border border-white/10 group-hover:border-primary group-hover:scale-110 transition-transform">
                         <!-- Simple Icon placeholder based on service icon name -->
                         <span class="text-2xl">
                             
@@ -181,10 +174,10 @@
         <div class="absolute inset-0 bg-primary/5 -skew-y-3 transform origin-bottom-right pointer-events-none">
         </div>
         <div class="max-w-3xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl font-bold mb-8">Ready to Transform Your Business?</h2>
+            <h2 class="text-3xl font-bold mb-8">Ready to Secure Your Business?</h2>
             <div class="bg-white/5 rounded-2xl p-8 border border-white/10 shadow-2xl backdrop-blur-sm">
                 <p class="text-lg opacity-90 mb-6">
-                    Connect with me to discuss how we can implement AI solutions tailored to your needs.
+                    Connect with me to discuss how we can implement security solutions tailored to your needs.
                 </p>
                 <div class="flex flex-col gap-4 items-center">
                     <a href="mailto:alex@neuralconsulting.ai"
