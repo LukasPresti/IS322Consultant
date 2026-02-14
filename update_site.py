@@ -2,16 +2,26 @@ import os
 import yaml
 import requests
 import argparse
+import json
 
 # Configuration
 API_KEY = os.getenv("LLM_API_KEY")
-API_URL = "https://openrouter.ai/api/v1/chat/completions" # Example using OpenRouter
-MODEL = "google/gemini-2.0-flash-001" 
 
 def update_config(user_prompt):
     if not API_KEY:
         print("Error: LLM_API_KEY environment variable not set.")
         return
+
+    # Determine provider based on key format
+    is_gemini = False
+    if API_KEY.startswith("AIza"):
+        is_gemini = True
+        print("Detected Google Gemini API Key.")
+        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
+    else:
+        print("Using OpenRouter/OpenAI API.")
+        api_url = "https://openrouter.ai/api/v1/chat/completions"
+        model = "google/gemini-2.0-flash-001"
 
     # Load current config
     try:
@@ -21,8 +31,8 @@ def update_config(user_prompt):
         print("Error: config.yaml not found.")
         return
 
-    # Construct system prompt
-    system_prompt = f"""
+    # Construct prompts
+    system_instruction = f"""
     You remain a helpful assistant that updates a YAML configuration file for a portfolio website based on user requests.
     
     Current YAML content:
@@ -32,37 +42,52 @@ def update_config(user_prompt):
     
     Instructions:
     1. Read the user's request.
-    2. detailed Modify the YAML content to reflect the user's request.
+    2. Modify the YAML content to reflect the user's request.
     3. Return ONLY the valid YAML code. Do not include markdown code blocks (```yaml ... ```) or any other text.
     4. Ensure the structure (keys) remains consistent unless explicitly asked to change.
     """
 
-    # Call LLM API
+    # Prepare Request
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json",
-         "HTTP-Referer": "http://localhost:3000", # Optional, for including your app on openrouter.ai rankings.
-        "X-Title": "Consultant Portfolio Updater", # Optional. Shows in rankings on openrouter.ai.
-    }
-    
-    data = {
-        "model": MODEL,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ]
+        "Content-Type": "application/json"
     }
 
+    if is_gemini:
+        # Google Gemini API Payload
+        data = {
+            "contents": [{
+                "parts": [{"text": system_instruction + "\n\nUser Request: " + user_prompt}]
+            }]
+        }
+    else:
+        # OpenRouter/OpenAI API Payload
+        headers["Authorization"] = f"Bearer {API_KEY}"
+        headers["HTTP-Referer"] = "http://localhost:3000"
+        headers["X-Title"] = "Consultant Portfolio Updater"
+        data = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system_instruction},
+                {"role": "user", "content": user_prompt}
+            ]
+        }
+
     try:
-        response = requests.post(API_URL, headers=headers, json=data)
+        response = requests.post(api_url, headers=headers, json=data)
         response.raise_for_status()
         result = response.json()
-        new_yaml_content = result['choices'][0]['message']['content'].strip()
-        
-        # Simple cleanup if the LLM still wraps in code blocks despite instructions
+
+        # Parse Response
+        if is_gemini:
+            new_yaml_content = result['candidates'][0]['content']['parts'][0]['text']
+        else:
+            new_yaml_content = result['choices'][0]['message']['content']
+            
+        # Clean up Markdown
+        new_yaml_content = new_yaml_content.strip()
         if new_yaml_content.startswith("```yaml"):
             new_yaml_content = new_yaml_content[7:]
-        if new_yaml_content.startswith("```"):
+        elif new_yaml_content.startswith("```"):
              new_yaml_content = new_yaml_content[3:]
         if new_yaml_content.endswith("```"):
             new_yaml_content = new_yaml_content[:-3]
@@ -80,7 +105,7 @@ def update_config(user_prompt):
         
     except requests.exceptions.RequestException as e:
         print(f"API Error: {e}")
-        if response:
+        if 'response' in locals() and response:
              print(f"Response text: {response.text}")
     except yaml.YAMLError as e:
         print(f"Error: Generated content was not valid YAML. {e}")
