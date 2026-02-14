@@ -22,5 +22,5 @@ services:
     description: "Automate repetitive tasks using intelligent agents that can read, reason, and act."
     icon: "robot"
 theme:
-  primary_color: "neon green"
-  background: "black"
+  primary_color: "#39ff14"
+  background: "#000000"
