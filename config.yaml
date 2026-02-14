@@ -1,4 +1,4 @@
-site_title: "Alex Neural - AI Consultant"
+site_title: "ENTER THE MATRIX"
 name: "Alex Neural"
 role: "Chief AI Officer"
 bio: "Helping businesses unlock the power of Generative AI. I specialize in LLM integration, prompt engineering, and automated workflow design."
@@ -22,5 +22,5 @@ services:
     description: "Automate repetitive tasks using intelligent agents that can read, reason, and act."
     icon: "robot"
 theme:
-  primary_color: "indigo"
-  background: "slate"
+  primary_color: "neon green"
+  background: "black"
